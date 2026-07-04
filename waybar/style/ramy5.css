@@ -1,0 +1,205 @@
+/* ╔══════════════════════════════════════════════════════╗
+   ║   Unified Minimalist Waybar — ramy5                 ║
+   ║   Style: Seamless Glassmorphism & Clean Accents      ║
+   ╚══════════════════════════════════════════════════════╝ */
+
+@import "style/theme.css";
+
+/* ── Global Reset ── */
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font", "MesloLGS Nerd Font", "Font Awesome";
+  font-weight: 600;
+  font-size: 13px;
+  min-height: 0;
+}
+
+/* ── Waybar Root Window (The Unified Bar) ── */
+window#waybar {
+  background: rgba(17, 17, 27, 0.85); /* شريط موحد شفاف */
+  color: @foreground;
+  border-radius: 20px;
+  border: 1px solid rgba(205, 214, 244, 0.1);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Remove individual pill backgrounds ── */
+.modules-left,
+.modules-right,
+.modules-center {
+  background: transparent;
+  border: none;
+  padding: 0 5px;
+  margin: 0;
+}
+
+/* ── Tooltips ── */
+tooltip {
+  background: rgba(30, 30, 46, 0.98);
+  border-radius: 12px;
+  border: 1px solid rgba(205, 214, 244, 0.15);
+  padding: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+tooltip label {
+  font-size: 13px;
+  color: #DCE2DF;
+}
+
+/* ══════════════════════════════════════
+   WORKSPACES (Minimalist Indicators)
+   ══════════════════════════════════════ */
+#workspaces {
+  padding: 0 8px;
+  margin: 0;
+}
+
+#workspaces button {
+  padding: 2px 8px;
+  color: rgba(205, 214, 244, 0.4);
+  margin: 6px 4px;
+  background: transparent;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+#workspaces button.active {
+  color: #1e1e2e;
+  background: #cba6f7;
+  padding: 2px 14px;
+  box-shadow: 0 0 10px rgba(203, 166, 247, 0.5);
+}
+
+#workspaces button.occupied {
+  color: #89b4fa;
+  background: rgba(137, 180, 250, 0.1);
+}
+
+#workspaces button:hover {
+  background: rgba(203, 166, 247, 0.2);
+  color: #cba6f7;
+}
+
+#workspaces button.urgent {
+  background: rgba(243, 139, 168, 0.2);
+  color: #f38ba8;
+}
+
+/* ══════════════════════════════════════
+   BASE MODULE STYLE
+   ══════════════════════════════════════ */
+#custom-launch_rofi, #custom-weather, #custom-notify, #power-profiles-daemon,
+#mpris, #clock, #tray, #custom-updater, #network, #pulseaudio, #backlight,
+#battery, #idle_inhibitor, #custom-nightlight, #custom-clipboard, #custom-system,
+#custom-power_btn {
+  padding: 0 12px;
+  margin: 6px 2px;
+  border-radius: 10px;
+  background: transparent;
+  color: #DCE2DF;
+  transition: all 0.2s ease-in-out;
+}
+
+/* ══════════════════════════════════════
+   SPECIFIC MODULE ACCENTS
+   ══════════════════════════════════════ */
+
+/* Launcher */
+#custom-launch_rofi {
+  color: #cba6f7;
+  font-size: 18px;
+  padding-left: 16px;
+}
+#custom-launch_rofi:hover {
+  background: rgba(203, 166, 247, 0.15);
+}
+
+/* CAVA */
+#custom-cava {
+  color: #89b4fa;
+  padding: 0 6px;
+  margin: 6px 2px;
+  font-size: 11px;
+}
+
+/* Clock - Center focus */
+#clock {
+  color: #cba6f7;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+#clock:hover {
+  background: rgba(203, 166, 247, 0.1);
+}
+
+/* Media Player */
+#mpris {
+  color: #a6e3a1;
+}
+
+/* System Info (CPU, RAM, Disk, Temp) */
+#custom-system {
+  padding: 0 8px;
+}
+#cpu { color: #fab387; padding-right: 6px; }
+#memory { color: #89b4fa; padding-right: 6px; }
+#disk { color: #a6e3a1; padding-right: 6px; }
+#temperature { color: #f38ba8; }
+
+#temperature.critical {
+  background: rgba(243, 139, 168, 0.2);
+  border-radius: 6px;
+  padding: 0 6px;
+}
+
+/* Audio Group */
+#pulseaudio {
+  color: #89b4fa;
+  padding-right: 6px;
+}
+#pulseaudio.microphone {
+  color: #89dceb;
+  padding-left: 6px;
+}
+#pulseaudio.muted, #pulseaudio.microphone.muted {
+  color: rgba(205, 214, 244, 0.3);
+}
+
+/* Battery */
+#battery { color: #a6e3a1; }
+#battery.warning { color: #f9e2af; }
+#battery.critical { color: #f38ba8; }
+#battery.charging { color: #a6e3a1; text-shadow: 0 0 5px rgba(166, 227, 161, 0.5); }
+
+/* Power Button */
+#custom-power_btn {
+  color: #f38ba8;
+  font-size: 16px;
+  padding-right: 16px;
+}
+#custom-power_btn:hover {
+  background: rgba(243, 139, 168, 0.15);
+  box-shadow: inset 0 -2px 0 #f38ba8; /* Hover effect with bottom line */
+}
+
+/* ══════════════════════════════════════
+   GLOBAL HOVER EFFECTS
+   ══════════════════════════════════════ */
+#network:hover, #backlight:hover, #battery:hover, #idle_inhibitor:hover,
+#custom-nightlight:hover, #custom-clipboard:hover, #custom-updater:hover,
+#custom-notify:hover, #custom-weather:hover, #power-profiles-daemon:hover {
+  background: rgba(205, 214, 244, 0.08);
+}
+
+/* Tray Icons Settings */
+#tray {
+  padding: 0 8px;
+}
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+}

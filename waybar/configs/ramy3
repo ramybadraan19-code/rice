@@ -1,0 +1,53 @@
+{
+    // ╔══════════════════════════════════════════════╗
+    // ║   Hanging Drop-Tabs Waybar — ramy4           ║
+    // ╚══════════════════════════════════════════════╝
+
+    "include": [
+        "$HOME/.config/waybar/modules/modules-main.jsonc",
+        "$HOME/.config/waybar/modules/modules-groups.jsonc",
+        "$HOME/.config/waybar/modules/modules-custom.jsonc"
+    ],
+
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "reload_style_on_change": true,
+
+    "height": 42,
+    "margin-top": 0, // الهامش صفر لتأثير التعليق
+    "margin-left": 15,
+    "margin-right": 15,
+
+    "modules-left": [
+        "custom/launch_rofi",
+        "hyprland/workspaces#preview",
+        "custom/weather",
+        "custom/notify",
+        "power-profiles-daemon"
+    ],
+
+    "modules-center": [
+        "mpris",
+        "custom/cava",
+        "clock"
+    ],
+
+    "modules-right": [
+        "tray",
+        "custom/updater",
+        "group/network",
+        "pulseaudio",
+        "pulseaudio#microphone",
+        "backlight",
+        "battery",
+        "idle_inhibitor",
+        "custom/nightlight",
+        "custom/clipboard",
+        "group/sysinfo",
+        "custom/power_btn"
+    ]
+}

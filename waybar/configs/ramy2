@@ -1,0 +1,55 @@
+{
+    // ╔══════════════════════════════════════════════╗
+    // ║   Floating Tri-Pill Waybar — by Claude       ║
+    // ╚══════════════════════════════════════════════╝
+
+    "include": [
+        "$HOME/.config/waybar/modules/modules-main.jsonc",
+        "$HOME/.config/waybar/modules/modules-groups.jsonc",
+        "$HOME/.config/waybar/modules/modules-custom.jsonc",
+    ],
+
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "reload_style_on_change": true,
+    "height": 36,
+    "margin-top": 8,
+    "margin-left": 12,
+    "margin-right": 12,
+
+    // ━━━━━ LEFT PILL ━━━━━
+    "modules-left": [
+        "custom/launch_rofi",
+        "hyprland/workspaces#preview",
+        "custom/weather",
+        "custom/notify",
+        "power-profiles-daemon"
+    ],
+
+    // ━━━━━ CENTER PILL ━━━━━
+    "modules-center": [
+        "mpris",
+        "custom/cava",
+        "clock"
+    ],
+
+    // ━━━━━ RIGHT PILL ━━━━━
+    "modules-right": [
+        "tray",
+        "custom/updater",
+        "group/network",
+        "pulseaudio",
+        "pulseaudio#microphone",
+        "backlight",
+        "battery",
+        "idle_inhibitor",
+        "custom/nightlight",
+        "custom/clipboard",
+        "group/sysinfo",
+        "custom/power_btn"
+    ]
+}

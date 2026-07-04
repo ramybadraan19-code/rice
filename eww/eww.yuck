@@ -1,0 +1,100 @@
+(defpoll hours   :interval "1s" "date '+%I'")
+(defpoll minutes :interval "1s" "date '+%M'")
+(defpoll seconds :interval "1s" "date '+%S'")
+(defpoll ampm    :interval "1s" "date '+%p' | tr '[:lower:]' '[:upper:]'")
+(defpoll day_name  :interval "1m" "date '+%A'")
+(defpoll full_date :interval "1m" "date '+%b %d, %Y' | tr '[:lower:]' '[:upper:]'")
+
+(defpoll blink :interval "1s"
+  "if [ $(( $(date +%S) % 2 )) -eq 0 ]; then echo ':'; else echo ' '; fi")
+
+;; التعديل هنا 👇 (1.5 ثانية لكل نقطة)
+;; رجعناها كل 2 ثانية 👇
+(defpoll dots_str :interval "1s"
+  "s=$(date +%-S); filled=$((s / 2)); empty=$((30 - filled)); printf '●%.0s' $(seq 1 $filled 2>/dev/null); printf '○%.0s' $(seq 1 $empty 2>/dev/null)")
+
+(defwidget clock_widget []
+  (box :orientation "v"
+       :space-evenly false
+       :halign "center"
+
+    (label :text day_name
+      :halign "center"
+      :style "font-family: 'Pacifico', cursive;
+              font-size: 80px;
+              color: #ffffff;
+              letter-spacing: 3px;
+              margin-bottom: 4px;")
+
+    (box :orientation "h"
+         :halign "center"
+         :space-evenly false
+
+      (label :text hours
+        :style "font-size: 80px;
+                font-weight: 400;
+                color: #ffffff;
+                letter-spacing: -5px;
+                font-family: 'Inter', sans-serif;")
+
+      (label :text blink
+        :style "font-size: 50px;
+                font-weight: 200;
+                color: rgba(255,255,255,0.6);
+                margin: 0 5px;
+                font-family: 'Inter', sans-serif;")
+
+      (label :text minutes
+        :style "font-size: 60px;
+                font-weight: 200;
+                color: rgba(255,255,255,0.6);
+                letter-spacing: -5px;
+                font-family: 'Inter', sans-serif;")
+
+      (label :text ampm
+        :style "font-size: 20px;
+                font-weight: 500;
+                color: #ffffff;
+                letter-spacing: 1.5px;
+                margin-bottom: 14px;
+                margin-left: 6px;
+                font-family: 'Inter', sans-serif;"))
+
+    (box :orientation "h"
+         :halign "center"
+         :space-evenly false
+         :style "margin-top: 2px;"
+
+      (label :text seconds
+        :style "font-size: 12px;
+                font-weight: 300;
+                color: #ffffff;
+                font-family: 'Inter', sans-serif;
+                letter-spacing: 2px;
+                min-width: 22px;")
+
+      (label :text dots_str
+        :style "font-size: 8px;
+                color: #ffffff;
+                letter-spacing: 2px;
+                margin-left: 8px;"))
+
+    (label :text full_date
+      :halign "center"
+      :style "font-size: 15px;
+              font-weight: 300;
+              color: rgba(255,255,255,0.6);
+              letter-spacing: 3px;
+              margin-top: 16px;
+              font-family: 'Inter', sans-serif;")))
+
+(defwindow clock
+  :monitor 0
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "380px"
+                      :height "240px"
+                      :anchor "center")
+  :stacking "bg"
+  :exclusive false
+  (clock_widget))

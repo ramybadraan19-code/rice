@@ -1,0 +1,150 @@
+/* ╔══════════════════════════════════════════════════════╗
+   ║   Neon Holo-Core Waybar — ramy7                     ║
+   ║   Style: Animated Cyber-Pulse & Hollow Neon Frames   ║
+   ╚══════════════════════════════════════════════════════╝ */
+
+@import "style/theme.css";
+
+/* ── حركة الوميض المستمر (The Crazy Element) ── */
+@keyframes neon-pulse-center {
+  0%   { box-shadow: 0 0 5px rgba(203, 166, 247, 0.4), inset 0 0 5px rgba(203, 166, 247, 0.2); }
+  50%  { box-shadow: 0 0 18px rgba(203, 166, 247, 0.8), inset 0 0 12px rgba(203, 166, 247, 0.5); }
+  100% { box-shadow: 0 0 5px rgba(203, 166, 247, 0.4), inset 0 0 5px rgba(203, 166, 247, 0.2); }
+}
+
+@keyframes neon-pulse-side {
+  0%   { box-shadow: 0 0 5px rgba(137, 180, 250, 0.2); }
+  50%  { box-shadow: 0 0 12px rgba(137, 180, 250, 0.6); }
+  100% { box-shadow: 0 0 5px rgba(137, 180, 250, 0.2); }
+}
+
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font", "MesloLGS Nerd Font", "Font Awesome";
+  font-weight: 900; /* خط بولد جداً لدعم الإضاءة */
+  font-size: 13px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: #DCE2DF;
+}
+
+/* ── الإطارات الهندسية المفرغة والمنيرة ── */
+.modules-left {
+  background: rgba(15, 15, 20, 0.4);
+  border: 2px solid #89b4fa; /* إطار نيون أزرق */
+  border-radius: 10px 30px 10px 30px; /* شكل مائل غير تقليدي */
+  animation: neon-pulse-side 4s infinite alternate; /* حركة تنفس بطيئة */
+  margin-right: 15px;
+  padding: 0 10px;
+}
+
+.modules-center {
+  background: rgba(20, 15, 25, 0.6);
+  border: 2px solid #cba6f7; /* إطار نيون بنفسجي */
+  border-radius: 30px; 
+  animation: neon-pulse-center 2s infinite; /* نبض سريع ومستمر للمركز */
+  padding: 0 15px;
+}
+
+.modules-right {
+  background: rgba(15, 15, 20, 0.4);
+  border: 2px solid #a6e3a1; /* إطار نيون أخضر */
+  border-radius: 30px 10px 30px 10px; /* شكل مائل عكسي للجهة اليسرى */
+  box-shadow: 0 0 10px rgba(166, 227, 161, 0.3);
+  margin-left: 15px;
+  padding: 0 10px;
+}
+
+/* ── توحيد المسافات لكل العناصر ── */
+#custom-launch_rofi, #custom-weather, #custom-notify, #power-profiles-daemon,
+#mpris, #clock, #tray, #custom-updater, #network, #pulseaudio, #backlight,
+#battery, #idle_inhibitor, #custom-nightlight, #custom-clipboard, #custom-system,
+#custom-power_btn {
+  padding: 0 8px;
+  margin: 6px 2px;
+  background: transparent;
+  color: #DCE2DF;
+}
+
+/* ── Workspaces (تصميم شرائح الليزر) ── */
+#workspaces {
+  padding: 0;
+  margin: 0;
+}
+
+#workspaces button {
+  color: rgba(137, 180, 250, 0.3);
+  padding: 0 6px;
+  margin: 6px 2px;
+  border-bottom: 3px solid transparent; /* الاعتماد على الخط السفلي فقط */
+  border-radius: 0;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+#workspaces button.active {
+  color: #89b4fa;
+  border-bottom: 3px solid #89b4fa; /* ليزر أزرق للمساحة النشطة */
+  text-shadow: 0 0 12px #89b4fa; /* توهج للنص */
+}
+
+#workspaces button:hover {
+  color: #f5c2e7;
+  border-bottom: 3px solid #f5c2e7;
+}
+
+/* ── الموديولات المركزية والـ Glow Effects ── */
+#custom-launch_rofi { color: #89b4fa; font-size: 20px; text-shadow: 0 0 8px #89b4fa; }
+#custom-cava { color: #f5c2e7; padding: 0 10px; text-shadow: 0 0 5px #f5c2e7; margin: 6px 0;}
+#clock { color: #cba6f7; font-size: 15px; letter-spacing: 1px; text-shadow: 0 0 8px #cba6f7; }
+#mpris { color: #94e2d5; }
+
+/* ── باقي العناصر ── */
+#custom-weather { color: #89dceb; }
+#custom-notify { color: #fab387; }
+#power-profiles-daemon { color: #f9e2af; }
+#tray { padding: 0 10px; }
+#custom-updater { color: #a6e3a1; }
+#network { color: #89dceb; }
+#pulseaudio { color: #cba6f7; }
+#pulseaudio.microphone { color: #f5c2e7; }
+#backlight { color: #f9e2af; }
+
+#battery { color: #a6e3a1; }
+#battery.warning { color: #fab387; text-shadow: 0 0 8px #fab387; }
+#battery.critical { color: #f38ba8; text-shadow: 0 0 10px #f38ba8; border-bottom: 2px solid #f38ba8; }
+
+#idle_inhibitor { color: #f38ba8; }
+#custom-nightlight { color: #f9e2af; }
+#custom-clipboard { color: #DCE2DF; }
+
+/* ── System Info ── */
+#custom-system { padding: 0 4px; }
+#cpu { color: #fab387; padding-right: 4px; }
+#memory { color: #89b4fa; padding-right: 4px; }
+#disk { color: #a6e3a1; padding-right: 4px; }
+#temperature { color: #f38ba8; }
+
+#custom-power_btn { 
+  color: #f38ba8; 
+  font-size: 18px; 
+  padding-right: 10px; 
+  text-shadow: 0 0 8px #f38ba8; 
+}
+
+#custom-power_btn:hover {
+  color: #1e1e2e;
+  background: #f38ba8;
+  box-shadow: 0 0 15px #f38ba8;
+  border-radius: 50%; /* يتحول لدائرة عند الوقوف عليه */
+}
+
+/* ── Hover Effects للموديولات ── */
+#network:hover, #pulseaudio:hover, #backlight:hover, #battery:hover {
+  text-shadow: 0 0 10px currentColor; /* النص ينور بلونه الخاص عند المرور بالماوس */
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}

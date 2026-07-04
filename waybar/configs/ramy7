@@ -1,0 +1,53 @@
+{
+    // ╔══════════════════════════════════════════════╗
+    // ║   Neon Holo-Core Waybar — ramy7              ║
+    // ╚══════════════════════════════════════════════╝
+
+    "include": [
+        "$HOME/.config/waybar/modules/modules-main.jsonc",
+        "$HOME/.config/waybar/modules/modules-groups.jsonc",
+        "$HOME/.config/waybar/modules/modules-custom.jsonc"
+    ],
+
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "reload_style_on_change": true,
+
+    "height": 48, 
+    "margin-top": 12,
+    "margin-left": 20,
+    "margin-right": 20,
+
+    "modules-left": [
+        "custom/launch_rofi",
+        "hyprland/workspaces#preview",
+        "custom/weather",
+        "custom/notify",
+        "power-profiles-daemon"
+    ],
+
+    "modules-center": [
+        "mpris",
+        "custom/cava",
+        "clock"
+    ],
+
+    "modules-right": [
+        "tray",
+        "custom/updater",
+        "group/network",
+        "pulseaudio",
+        "pulseaudio#microphone",
+        "backlight",
+        "battery",
+        "idle_inhibitor",
+        "custom/nightlight",
+        "custom/clipboard",
+        "group/sysinfo",
+        "custom/power_btn"
+    ]
+}

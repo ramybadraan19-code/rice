@@ -1,0 +1,511 @@
+/* ╔══════════════════════════════════════════════════════╗
+   ║   Floating Tri-Pill Waybar — Modern Dark Theme      ║
+   ║   Style: Glassmorphism + Neon Accent Highlights      ║
+   ╚══════════════════════════════════════════════════════╝ */
+
+@import "style/theme.css";
+
+/* ── Global Reset ── */
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font", "MesloLGS Nerd Font", "Font Awesome";
+  font-weight: bold;
+  font-size: 12px;
+  min-height: 0;
+}
+
+/* ── Waybar Root Window ── */
+window#waybar {
+  background: transparent;
+  color: @foreground;
+}
+
+/* ── Three Pills Container Strategy ──
+   Each pill (left/center/right) is a
+   floating rounded glass panel          */
+
+.modules-left,
+.modules-right,
+.modules-center {
+  background: rgba(17, 17, 27, 0.75);
+  border-radius: 18px;
+  border: 1px solid rgba(205, 214, 244, 0.08);
+  padding: 0 3px;
+  margin: 0;
+}
+
+/* ── Tooltips ── */
+tooltip {
+  background: rgba(24, 24, 37, 0.95);
+  border-radius: 12px;
+  border: 1px solid rgba(205, 214, 244, 0.12);
+  padding: 4px;
+}
+
+tooltip label {
+  font-size: 13px;
+  color: @foreground;
+  padding: 6px 10px;
+}
+
+/* ══════════════════════════════════════
+   WORKSPACES
+   ══════════════════════════════════════ */
+
+#workspaces {
+  padding: 0 6px;
+  background: transparent;
+  margin: 0;
+}
+
+#workspaces button {
+  padding: 2px 6px;
+  color: rgba(205, 214, 244, 0.45);
+  margin: 4px 2px;
+  background: transparent;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+#workspaces button.active {
+  color: #1e1e2e;
+  background: #DCE2DF;
+  padding: 2px 10px;
+  margin: 4px 2px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(203, 166, 247, 0.4);
+}
+
+#workspaces button.occupied {
+  color: rgba(205, 214, 244, 0.65);
+  background: rgba(205, 214, 244, 0.06);
+}
+
+#workspaces button:hover {
+  background: rgba(203, 166, 247, 0.15);
+  color: #cba6f7;
+  border-radius: 10px;
+}
+
+#workspaces button.urgent {
+  background: rgba(243, 139, 168, 0.25);
+  color: #f38ba8;
+}
+
+/* ══════════════════════════════════════
+   BASE MODULE STYLE — All modules share this
+   ══════════════════════════════════════ */
+
+#custom-launch_rofi,
+#custom-lock_screen,
+#custom-light_dark,
+#custom-power_btn,
+#custom-power_profile,
+#custom-weather,
+#custom-updater,
+#custom-system,
+#custom-notify,
+#custom-clipboard,
+#custom-nightlight,
+#custom-wallpaper-change,
+#window,
+#cpu,
+#disk,
+#idle_inhibitor,
+#memory,
+#clock,
+#pulseaudio,
+#network,
+#tray,
+#temperature,
+#workspaces,
+#taskbar,
+#battery,
+#mpris,
+#hyprland-keyboard,
+#power-profiles-daemon,
+#backlight {
+  background: transparent;
+  color: @foreground;
+  padding: 0 10px;
+  margin: 4px 0;
+  border-radius: 12px;
+}
+
+/* ══════════════════════════════════════
+   LAUNCHER — Left edge anchor
+   ══════════════════════════════════════ */
+
+#custom-launch_rofi {
+  color: #DCE2DF;
+  font-size: 16px;
+  padding: 0 14px 0 10px;
+  margin: 3px 2px 3px 3px;
+  background: rgba(203, 166, 247, 0.1);
+  border-radius: 14px;
+  border: 1px solid rgba(203, 166, 247, 0.2);
+}
+
+#custom-launch_rofi:hover {
+  background: rgba(203, 166, 247, 0.2);
+  color: #f5c2e7;
+  box-shadow: 0 0 16px rgba(203, 166, 247, 0.35);
+}
+
+/* ══════════════════════════════════════
+   CLOCK — Center pill anchor
+   ══════════════════════════════════════ */
+
+#clock {
+  font-size: 13px;
+  color: @foreground;
+  padding: 0 16px;
+  margin: 3px 3px 3px 2px;
+  background: rgba(205, 214, 244, 0.06);
+  border-radius: 14px;
+  letter-spacing: 0.5px;
+}
+
+/* ══════════════════════════════════════
+   MPRIS — Media player
+   ══════════════════════════════════════ */
+
+#mpris {
+  color: #a6e3a1;
+  padding: 0 12px;
+  margin: 3px 2px;
+  background: rgba(166, 227, 161, 0.08);
+  border-radius: 14px;
+  font-size: 14px;
+}
+
+#mpris:hover {
+  background: rgba(166, 227, 161, 0.16);
+  box-shadow: 0 0 12px rgba(166, 227, 161, 0.25);
+}
+
+/* ══════════════════════════════════════
+   CAVA — Audio visualizer
+   ══════════════════════════════════════ */
+
+#custom-cava {
+  color: #DCE2DF;
+  background: transparent;
+  padding: 0 0px;
+  margin: 6px 4px;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+/* ══════════════════════════════════════
+   AUDIO — Volume + Mic
+   ══════════════════════════════════════ */
+
+#pulseaudio {
+  color: #DCE2DF;
+  padding: 0 10px;
+  margin: 3px 0;
+  background: rgba(137, 180, 250, 0.07);
+  border-radius: 12px 0 0 12px;
+  font-size: 13px;
+}
+
+#pulseaudio.muted {
+  color: rgba(137, 180, 250, 0.35);
+}
+
+#pulseaudio.microphone {
+  color: #89dceb;
+  padding: 0 10px;
+  margin: 3px 2px 3px 0;
+  background: rgba(137, 220, 235, 0.07);
+  border-radius: 0 12px 12px 0;
+  font-size: 13px;
+}
+
+#pulseaudio.microphone.muted {
+  color: rgba(137, 220, 235, 0.35);
+}
+
+/* ══════════════════════════════════════
+   NETWORK
+   ══════════════════════════════════════ */
+
+#network {
+  color: #89dceb;
+  font-size: 15px;
+  padding: 0 10px;
+  background: transparent;
+}
+
+#network.disconnected {
+  color: rgba(243, 139, 168, 0.7);
+}
+
+/* ══════════════════════════════════════
+   BATTERY
+   ══════════════════════════════════════ */
+
+#battery {
+  color: #a6e3a1;
+  background: transparent;
+  font-size: 13px;
+  padding: 0 8px;
+}
+
+#battery.warning {
+  color: #f9e2af;
+}
+
+#battery.critical {
+  color: #f38ba8;
+}
+
+@keyframes battery-blink {
+  50% { opacity: 0.4; }
+}
+
+#battery.critical:not(.charging) {
+  animation: battery-blink 0.8s ease-in-out infinite;
+}
+
+#battery.charging {
+  color: #a6e3a1;
+}
+
+/* ══════════════════════════════════════
+   BACKLIGHT
+   ══════════════════════════════════════ */
+
+#backlight {
+  color: #f9e2af;
+  background: transparent;
+  font-size: 12px;
+  padding: 0 6px;
+}
+
+/* ══════════════════════════════════════
+   SYSTEM INFO GROUP
+   ══════════════════════════════════════ */
+
+#custom-system {
+  color: #cba6f7;
+  font-size: 14px;
+  padding: 0 10px;
+  background: rgba(203, 166, 247, 0.08);
+  border-radius: 12px;
+  margin: 3px 2px;
+}
+
+#custom-system:hover {
+  background: rgba(203, 166, 247, 0.18);
+}
+
+#cpu {
+  color: #fab387;
+  background: transparent;
+  font-size: 11px;
+}
+
+#memory {
+  color: #cba6f7;
+  background: transparent;
+  font-size: 11px;
+}
+
+#disk {
+  color: #DCE2DF;
+  background: transparent;
+  font-size: 11px;
+}
+
+#temperature {
+  color: #f38ba8;
+  background: transparent;
+  font-size: 11px;
+}
+
+#temperature.critical {
+  color: #f38ba8;
+  text-shadow: 0 0 8px rgba(243, 139, 168, 0.6);
+}
+
+/* ══════════════════════════════════════
+   NOTIFICATIONS
+   ══════════════════════════════════════ */
+
+#custom-notify {
+  color: #fab387;
+  padding: 0 12px;
+  background: rgba(250, 179, 135, 0.08);
+  border-radius: 12px;
+  margin: 3px 2px;
+  font-size: 13px;
+}
+
+#custom-notify:hover {
+  background: rgba(250, 179, 135, 0.18);
+}
+
+/* ══════════════════════════════════════
+   WEATHER
+   ══════════════════════════════════════ */
+
+#custom-weather {
+  color: #DCE2DF;
+  background: transparent;
+  padding: 0 10px;
+  margin-left: 0px;
+  margin-right: 7px;
+  font-size: 12px;
+}
+
+/* ══════════════════════════════════════
+   UPDATER
+   ══════════════════════════════════════ */
+
+#custom-updater {
+  color: #a6e3a1;
+  background: rgba(166, 227, 161, 0.08);
+  border-radius: 12px;
+  padding: 0 12px;
+  margin: 3px 4px 3px 3px;
+  font-size: 12px;
+}
+
+#custom-updater:hover {
+  background: rgba(166, 227, 161, 0.18);
+}
+
+/* ══════════════════════════════════════
+   IDLE INHIBITOR
+   ══════════════════════════════════════ */
+
+#idle_inhibitor {
+  font-size: 14px;
+  padding: 0 10px;
+  color: #f9e2af;
+  background: transparent;
+}
+
+#idle_inhibitor.activated {
+  color: #f38ba8;
+}
+
+/* ══════════════════════════════════════
+   CLIPBOARD
+   ══════════════════════════════════════ */
+
+#custom-clipboard {
+  font-size: 13px;
+  padding: 0 10px;
+  color: #DCE2DF;
+  background: transparent;
+}
+
+/* ══════════════════════════════════════
+   NIGHTLIGHT
+   ══════════════════════════════════════ */
+
+#custom-nightlight {
+  font-size: 14px;
+  padding: 0 8px;
+  color: #f9e2af;
+  background: transparent;
+}
+
+/* ══════════════════════════════════════
+   POWER PROFILES
+   ══════════════════════════════════════ */
+
+#power-profiles-daemon {
+  border-radius: 12px;
+  padding: 0 12px;
+  margin: 3px 2px;
+  font-size: 14px;
+}
+
+#power-profiles-daemon.performance {
+  color: #f9e2af;
+  background: rgba(249, 226, 175, 0.1);
+}
+
+#power-profiles-daemon.balanced {
+  color: #a6e3a1;
+  background: rgba(166, 227, 161, 0.08);
+}
+
+#power-profiles-daemon.power-saver {
+  color: #89dceb;
+  background: rgba(137, 220, 235, 0.08);
+}
+
+/* ══════════════════════════════════════
+   TRAY
+   ══════════════════════════════════════ */
+
+#tray {
+  padding: 0 10px;
+  margin: 3px 4px 3px 3px;
+  background: rgba(205, 214, 244, 0.04);
+  border-radius: 12px;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+}
+
+/* ══════════════════════════════════════
+   POWER BUTTON — Right edge anchor
+   ══════════════════════════════════════ */
+
+#custom-power_btn {
+  color: #f38ba8;
+  font-size: 15px;
+  padding: 0 14px 0 10px;
+  margin: 3px 3px 3px 2px;
+  background: rgba(243, 139, 168, 0.1);
+  border-radius: 14px;
+  border: 1px solid rgba(243, 139, 168, 0.18);
+}
+
+#custom-power_btn:hover {
+  background: rgba(243, 139, 168, 0.22);
+  box-shadow: 0 0 16px rgba(243, 139, 168, 0.35);
+}
+
+/* ══════════════════════════════════════
+   HOVER STATES — Generic glow on hover
+   ══════════════════════════════════════ */
+
+#clock:hover,
+#battery:hover,
+#network:hover,
+#backlight:hover,
+#custom-weather:hover,
+#custom-clipboard:hover,
+#custom-nightlight:hover,
+#idle_inhibitor:hover {
+  background: rgba(205, 214, 244, 0.08);
+  border-radius: 10px;
+}
+
+/* ══════════════════════════════════════
+   WINDOW TITLE
+   ══════════════════════════════════════ */
+
+#window {
+  border-radius: 12px;
+  color: rgba(205, 214, 244, 0.65);
+  font-size: 12px;
+  padding: 0 14px;
+  margin: 3px 8px;
+  background: rgba(205, 214, 244, 0.04);
+  font-weight: normal;
+  letter-spacing: 0.3px;
+}

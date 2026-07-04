@@ -1,0 +1,448 @@
+/* ╔══════════════════════════════════════════════════════╗
+   ║  Cold Mist Archipelago — Waybar Theme  [FIXED]      ║
+   ║  Palette: foggy valley — ice · slate · forest       ║
+   ║  Animation: breath — opacity+scale per island       ║
+   ╚══════════════════════════════════════════════════════╝ */
+
+@import "style/theme.css";
+
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font", "MesloLGS Nerd Font", "Font Awesome";
+  font-weight: bold;
+  font-size: 12px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: rgba(185, 208, 214, 0.85);
+}
+
+tooltip {
+  background: rgba(18, 28, 26, 0.97);
+  border-radius: 10px;
+  border: 1px solid rgba(155, 185, 192, 0.12);
+}
+tooltip label {
+  font-size: 13px;
+  color: rgba(190, 212, 218, 0.9);
+  padding: 6px 10px;
+}
+
+/* ══════════════════════════════════════════════════
+   BREATH ANIMATION
+   CSS custom props --breath-lo/hi control range.
+   Each module sets its own --bd (duration) and
+   --bdelay so they're never in sync.
+   ══════════════════════════════════════════════════ */
+
+@keyframes breath {
+  0%, 100% { opacity: var(--breath-lo, 0.72); transform: scale(1.000); }
+  50%       { opacity: var(--breath-hi, 0.96); transform: scale(1.012); }
+}
+
+/* Apply animation + shared island shape to every module by ID */
+#custom-launch_rofi,
+#custom-power_btn,
+#custom-weather,
+#custom-notify,
+#custom-updater,
+#custom-system,
+#custom-clipboard,
+#custom-nightlight,
+#custom-cava,
+#workspaces,
+#clock,
+#mpris,
+#pulseaudio,
+#network,
+#battery,
+#backlight,
+#idle_inhibitor,
+#power-profiles-daemon,
+#tray,
+#temperature,
+#cpu,
+#memory,
+#disk {
+  border-radius: 18px;
+  margin: 5px 3px;
+  padding: 3px 11px;
+  animation: breath var(--bd, 6s) ease-in-out var(--bdelay, 0s) infinite;
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.25s ease;
+}
+
+/* Hover — island wakes up */
+#custom-launch_rofi:hover,
+#custom-power_btn:hover,
+#custom-weather:hover,
+#custom-notify:hover,
+#custom-updater:hover,
+#custom-system:hover,
+#custom-clipboard:hover,
+#custom-nightlight:hover,
+#custom-cava:hover,
+#workspaces:hover,
+#clock:hover,
+#mpris:hover,
+#pulseaudio:hover,
+#network:hover,
+#battery:hover,
+#backlight:hover,
+#idle_inhibitor:hover,
+#power-profiles-daemon:hover,
+#tray:hover {
+  animation-play-state: paused;
+  opacity: 1;
+  transform: scale(1.03) translateY(-1px);
+}
+
+/* ══════════════════════════════════════════════════
+   WORKSPACES
+   ══════════════════════════════════════════════════ */
+
+#workspaces {
+  background: rgba(95, 118, 126, 0.12);
+  border: 1px solid rgba(95, 118, 126, 0.2);
+  padding: 2px 8px;
+  --bd: 7s; --bdelay: 0.3s;
+  --breath-lo: 0.72; --breath-hi: 0.95;
+}
+
+#workspaces button {
+  padding: 2px 5px;
+  color: rgba(140, 165, 172, 0.45);
+  background: transparent;
+  border-radius: 6px;
+  margin: 2px 2px;
+  font-size: 11px;
+  animation: none;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#workspaces button.active {
+  color: rgba(215, 230, 234, 0.95);
+  background: rgba(184, 205, 210, 0.16);
+  border-bottom: 1.5px solid rgba(184, 205, 210, 0.65);
+  box-shadow: 0 0 8px rgba(184, 205, 210, 0.2);
+  border-radius: 5px 5px 3px 3px;
+  padding: 2px 10px;
+}
+
+#workspaces button.occupied {
+  color: rgba(140, 165, 172, 0.55);
+}
+
+#workspaces button:hover {
+  background: rgba(155, 185, 192, 0.12);
+  color: rgba(190, 215, 220, 0.85);
+}
+
+#workspaces button.urgent {
+  color: rgba(200, 165, 145, 0.85);
+  background: rgba(170, 110, 90, 0.1);
+}
+
+/* ══════════════════════════════════════════════════
+   LAUNCHER — ice accent, medium breath
+   ══════════════════════════════════════════════════ */
+
+#custom-launch_rofi {
+  background: rgba(184, 205, 210, 0.10);
+  border: 1px solid rgba(184, 205, 210, 0.22);
+  color: #b8cdd2;
+  font-size: 15px;
+  padding: 3px 15px;
+  --bd: 5s; --bdelay: 0s;
+  --breath-lo: 0.78; --breath-hi: 1.0;
+}
+
+/* ══════════════════════════════════════════════════
+   WEATHER
+   ══════════════════════════════════════════════════ */
+
+#custom-weather {
+  background: rgba(110, 148, 158, 0.08);
+  border: 1px solid rgba(130, 165, 174, 0.13);
+  color: rgba(160, 192, 200, 0.78);
+  --bd: 8s; --bdelay: 1.4s;
+  --breath-lo: 0.65; --breath-hi: 0.90;
+}
+
+/* ══════════════════════════════════════════════════
+   NOTIFICATIONS — only warm tone
+   ══════════════════════════════════════════════════ */
+
+#custom-notify {
+  background: rgba(155, 130, 108, 0.08);
+  border: 1px solid rgba(175, 150, 128, 0.13);
+  color: rgba(195, 172, 150, 0.75);
+  --bd: 6s; --bdelay: 2.1s;
+  --breath-lo: 0.60; --breath-hi: 0.88;
+}
+
+/* ══════════════════════════════════════════════════
+   POWER PROFILES
+   ══════════════════════════════════════════════════ */
+
+#power-profiles-daemon {
+  --bd: 9s; --bdelay: 0.8s;
+  --breath-lo: 0.62; --breath-hi: 0.88;
+  background: rgba(78, 105, 78, 0.08);
+  border: 1px solid rgba(100, 135, 100, 0.13);
+}
+#power-profiles-daemon.performance { color: rgba(200, 195, 145, 0.75); }
+#power-profiles-daemon.balanced    { color: rgba(120, 158, 130, 0.78); }
+#power-profiles-daemon.power-saver { color: rgba(115, 168, 178, 0.75); }
+
+/* ══════════════════════════════════════════════════
+   MPRIS
+   ══════════════════════════════════════════════════ */
+
+#mpris {
+  background: rgba(45, 72, 58, 0.16);
+  border: 1px solid rgba(80, 118, 95, 0.20);
+  color: rgba(120, 158, 135, 0.78);
+  font-size: 13px;
+  --bd: 7.5s; --bdelay: 1.8s;
+  --breath-lo: 0.68; --breath-hi: 0.92;
+}
+
+/* ══════════════════════════════════════════════════
+   CAVA — fastest breath
+   ══════════════════════════════════════════════════ */
+
+#custom-cava {
+  background: rgba(55, 75, 82, 0.10);
+  border: 1px solid rgba(88, 115, 125, 0.14);
+  color: rgba(140, 175, 185, 0.6);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  padding: 3px 8px;
+  --bd: 3.5s; --bdelay: 0s;
+  --breath-lo: 0.55; --breath-hi: 0.88;
+}
+
+/* ══════════════════════════════════════════════════
+   CLOCK — anchor, barely breathes
+   ring flashes every 60s via second keyframe
+   ══════════════════════════════════════════════════ */
+
+@keyframes minute-ring {
+  0%, 90%, 100% { box-shadow: 0 0 0px rgba(184,205,212,0.0); }
+  95%            { box-shadow: 0 0 0 2px rgba(184,205,212,0.35),
+                               0 0 14px rgba(184,205,212,0.15); }
+}
+
+#clock {
+  background: rgba(175, 198, 205, 0.09);
+  border: 1px solid rgba(184, 205, 212, 0.18);
+  color: rgba(212, 228, 233, 0.96);
+  font-size: 12.5px;
+  letter-spacing: 0.8px;
+  padding: 3px 18px;
+  --bd: 12s; --bdelay: 0s;
+  --breath-lo: 0.88; --breath-hi: 1.0;
+  animation: breath 12s ease-in-out infinite,
+             minute-ring 60s ease-in-out infinite;
+}
+
+/* ══════════════════════════════════════════════════
+   TRAY
+   ══════════════════════════════════════════════════ */
+
+#tray {
+  background: rgba(55, 72, 78, 0.09);
+  border: 1px solid rgba(88, 112, 120, 0.12);
+  --bd: 10s; --bdelay: 3.2s;
+  --breath-lo: 0.55; --breath-hi: 0.78;
+}
+
+/* ══════════════════════════════════════════════════
+   NETWORK
+   ══════════════════════════════════════════════════ */
+
+#network {
+  background: rgba(62, 88, 98, 0.10);
+  border: 1px solid rgba(95, 128, 140, 0.15);
+  color: rgba(145, 182, 195, 0.75);
+  font-size: 14px;
+  --bd: 8.5s; --bdelay: 2.5s;
+  --breath-lo: 0.65; --breath-hi: 0.92;
+}
+
+#network.disconnected { color: rgba(185, 145, 130, 0.65); }
+
+/* ══════════════════════════════════════════════════
+   AUDIO
+   ══════════════════════════════════════════════════ */
+
+#pulseaudio {
+  background: rgba(62, 88, 98, 0.09);
+  border: 1px solid rgba(95, 125, 135, 0.13);
+  color: rgba(138, 172, 185, 0.72);
+  border-radius: 18px 0 0 18px;
+  margin-right: 1px;
+  --bd: 7s; --bdelay: 1.2s;
+  --breath-lo: 0.65; --breath-hi: 0.90;
+}
+
+#pulseaudio.muted { color: rgba(138, 172, 185, 0.28); }
+
+#pulseaudio#microphone {
+  background: rgba(55, 80, 88, 0.09);
+  border: 1px solid rgba(85, 115, 125, 0.13);
+  color: rgba(128, 162, 175, 0.68);
+  border-radius: 0 18px 18px 0;
+  margin-left: 1px;
+  --bd: 7s; --bdelay: 1.7s;
+  --breath-lo: 0.62; --breath-hi: 0.88;
+}
+
+/* ══════════════════════════════════════════════════
+   BACKLIGHT
+   ══════════════════════════════════════════════════ */
+
+#backlight {
+  background: rgba(145, 168, 155, 0.07);
+  border: 1px solid rgba(160, 185, 172, 0.11);
+  color: rgba(185, 205, 192, 0.65);
+  --bd: 9s; --bdelay: 4.0s;
+  --breath-lo: 0.58; --breath-hi: 0.85;
+}
+
+/* ══════════════════════════════════════════════════
+   BATTERY
+   ══════════════════════════════════════════════════ */
+
+#battery {
+  background: rgba(42, 68, 52, 0.14);
+  border: 1px solid rgba(75, 110, 85, 0.20);
+  color: rgba(118, 158, 130, 0.80);
+  font-size: 13px;
+  --bd: 9.5s; --bdelay: 0.5s;
+  --breath-lo: 0.70; --breath-hi: 0.95;
+}
+
+#battery.warning  { color: rgba(192, 178, 130, 0.78); }
+#battery.critical { color: rgba(185, 130, 115, 0.85); }
+
+@keyframes critical-pulse {
+  0%, 100% { opacity: 0.85; }
+  50%       { opacity: 0.30; }
+}
+#battery.critical:not(.charging) {
+  animation: critical-pulse 1.2s ease-in-out infinite;
+}
+
+/* ══════════════════════════════════════════════════
+   IDLE INHIBITOR
+   ══════════════════════════════════════════════════ */
+
+#idle_inhibitor {
+  background: rgba(85, 108, 118, 0.09);
+  border: 1px solid rgba(112, 138, 148, 0.13);
+  color: rgba(158, 185, 195, 0.62);
+  font-size: 13px;
+  --bd: 11s; --bdelay: 2.8s;
+  --breath-lo: 0.55; --breath-hi: 0.82;
+}
+
+#idle_inhibitor.activated { color: rgba(192, 172, 145, 0.80); }
+
+/* ══════════════════════════════════════════════════
+   NIGHTLIGHT
+   ══════════════════════════════════════════════════ */
+
+#custom-nightlight {
+  background: rgba(130, 115, 85, 0.08);
+  border: 1px solid rgba(158, 142, 108, 0.12);
+  color: rgba(185, 170, 130, 0.62);
+  font-size: 13px;
+  --bd: 8s; --bdelay: 3.5s;
+  --breath-lo: 0.55; --breath-hi: 0.82;
+}
+
+/* ══════════════════════════════════════════════════
+   CLIPBOARD
+   ══════════════════════════════════════════════════ */
+
+#custom-clipboard {
+  background: rgba(68, 90, 98, 0.08);
+  border: 1px solid rgba(98, 125, 135, 0.12);
+  color: rgba(145, 172, 182, 0.62);
+  font-size: 13px;
+  --bd: 8.5s; --bdelay: 1.9s;
+  --breath-lo: 0.58; --breath-hi: 0.85;
+}
+
+/* ══════════════════════════════════════════════════
+   SYSINFO
+   ══════════════════════════════════════════════════ */
+
+#custom-system {
+  background: rgba(62, 82, 90, 0.10);
+  border: 1px solid rgba(95, 120, 130, 0.15);
+  color: rgba(145, 175, 185, 0.65);
+  font-size: 13px;
+  --bd: 7s; --bdelay: 0.9s;
+  --breath-lo: 0.60; --breath-hi: 0.88;
+}
+
+#cpu, #memory, #disk, #temperature {
+  background: transparent;
+  color: rgba(135, 165, 175, 0.62);
+  font-size: 11px;
+  border: none;
+  animation: none;
+  margin: 5px 0;
+  padding: 3px 8px;
+  border-radius: 0;
+}
+
+#temperature.critical { color: rgba(195, 142, 128, 0.88); }
+
+/* ══════════════════════════════════════════════════
+   UPDATER
+   ══════════════════════════════════════════════════ */
+
+#custom-updater {
+  background: rgba(52, 80, 62, 0.12);
+  border: 1px solid rgba(80, 118, 90, 0.17);
+  color: rgba(118, 158, 128, 0.72);
+  --bd: 9s; --bdelay: 2.3s;
+  --breath-lo: 0.62; --breath-hi: 0.90;
+}
+
+/* ══════════════════════════════════════════════════
+   POWER BUTTON — slowest breath, barely there
+   ══════════════════════════════════════════════════ */
+
+#custom-power_btn {
+  background: rgba(105, 60, 60, 0.11);
+  border: 1px solid rgba(140, 88, 88, 0.17);
+  color: rgba(175, 125, 125, 0.68);
+  font-size: 14px;
+  padding: 3px 15px;
+  --bd: 13s; --bdelay: 4.5s;
+  --breath-lo: 0.55; --breath-hi: 0.82;
+}
+
+/* ══════════════════════════════════════════════════
+   WINDOW TITLE
+   ══════════════════════════════════════════════════ */
+
+#window {
+  background: transparent;
+  color: rgba(155, 180, 188, 0.45);
+  font-size: 11px;
+  font-weight: normal;
+  letter-spacing: 0.3px;
+  border: none;
+  animation: none;
+  padding: 0 14px;
+  margin: 5px 8px;
+  border-radius: 0;
+}

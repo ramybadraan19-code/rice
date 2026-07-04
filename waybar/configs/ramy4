@@ -1,0 +1,90 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+
+  "modules-left": [
+    "custom/launch_rofi",
+    "hyprland/workspaces"
+  ],
+
+  "modules-center": [
+    "clock",
+    "custom/cava",
+    "mpris"
+  ],
+
+  "modules-right": [
+    "cpu",
+    "memory",
+    "disk",
+    "temperature",
+    "pulseaudio",
+    "network",
+    "battery",
+    "tray",
+    "custom/notify",
+    "custom/power_btn"
+  ],
+
+  "clock": {
+    "format": "{:%a %d %b  %H:%M}"
+  },
+
+  "cpu": {
+    "format": " {usage}%"
+  },
+
+  "memory": {
+    "format": " {}%"
+  },
+
+  "disk": {
+    "format": " {percentage_used}%"
+  },
+
+  "temperature": {
+    "critical-threshold": 80,
+    "format": " {temperatureC}°"
+  },
+
+  "battery": {
+    "format": " {capacity}%",
+    "format-charging": " {capacity}%"
+  },
+
+  "network": {
+    "format-wifi": "",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "⚠"
+  },
+
+  "pulseaudio": {
+    "format": " {volume}%"
+  },
+
+  "mpris": {
+    "format": "{artist} - {title}"
+  },
+
+  "custom/launch_rofi": {
+    "format": "",
+    "on-click": "rofi -show drun"
+  },
+
+  "custom/power_btn": {
+    "format": "⏻",
+    "on-click": "wlogout"
+  },
+
+  "custom/notify": {
+    "format": "",
+    "on-click": "swaync-client -t"
+  },
+
+  "custom/cava": {
+    "exec": "~/.config/waybar/scripts/cava.sh",
+    "return-type": "json",
+    "interval": 1
+  }
+}

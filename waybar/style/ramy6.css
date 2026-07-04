@@ -1,0 +1,119 @@
+/* ╔══════════════════════════════════════════════════════╗
+   ║   Seamless Smart Capsule Waybar — ramy6             ║
+   ║   Style: Infinity Floating Pill & Minimalist Flow    ║
+   ╚══════════════════════════════════════════════════════╝ */
+
+@import "style/theme.css";
+
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font", "MesloLGS Nerd Font", "Font Awesome";
+  font-weight: 700;
+  font-size: 13px;
+  min-height: 0;
+}
+
+/* ── الكبسولة الرئيسية العائمة ── */
+window#waybar {
+  background: rgba(17, 17, 27, 0.75); /* زجاج داكن وأنيق */
+  color: #DCE2DF;
+  border-radius: 50px; /* حواف دائرية بالكامل لشكل الكبسولة */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5); /* ظل عميق للإيحاء بالطفو */
+}
+
+/* ── إلغاء أي خلفيات للأقسام الداخلية لضمان الانسيابية ── */
+.modules-left, .modules-center, .modules-right {
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0 8px;
+}
+
+/* ── توحيد تصميم كل العناصر (بدون خلفية في الحالة العادية) ── */
+#custom-launch_rofi, #custom-weather, #custom-notify, #power-profiles-daemon,
+#mpris, #clock, #tray, #custom-updater, #network, #pulseaudio, #backlight,
+#battery, #idle_inhibitor, #custom-nightlight, #custom-clipboard, #custom-system,
+#custom-power_btn {
+  padding: 0 12px;
+  margin: 6px 2px;
+  border-radius: 30px; /* التناسق مع شكل الكبسولة */
+  background: transparent; 
+  color: #DCE2DF;
+  transition: background 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ── مساحات العمل (Workspaces - كبسولات داخلية) ── */
+#workspaces {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 30px;
+  padding: 4px 6px;
+  margin: 6px 4px;
+}
+
+#workspaces button {
+  color: rgba(205, 214, 244, 0.4);
+  padding: 2px 10px;
+  margin: 0 2px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+#workspaces button.active {
+  color: #11111b;
+  background: #cba6f7; /* إبراز المساحة النشطة بلون قوي */
+  box-shadow: 0 0 10px rgba(203, 166, 247, 0.4);
+  font-weight: 900;
+}
+
+#workspaces button:hover {
+  background: rgba(203, 166, 247, 0.2);
+  color: #cba6f7;
+}
+
+/* ── الألوان الخاصة بكل موديول ── */
+#custom-launch_rofi { color: #89b4fa; font-size: 18px; padding-left: 14px; }
+#custom-weather { color: #89dceb; }
+#custom-notify { color: #fab387; }
+#power-profiles-daemon { color: #f9e2af; }
+
+#mpris { color: #a6e3a1; }
+#custom-cava { color: #94e2d5; padding: 0 8px; font-size: 11px; margin: 6px 0; }
+#clock { color: #cba6f7; font-size: 14px; letter-spacing: 0.5px; }
+
+#tray { padding: 0 12px; }
+#custom-updater { color: #a6e3a1; }
+#network { color: #89dceb; }
+#pulseaudio { color: #89b4fa; }
+#pulseaudio.microphone { color: #f5c2e7; }
+#backlight { color: #f9e2af; }
+#battery { color: #a6e3a1; }
+#battery.warning { color: #fab387; }
+#battery.critical { color: #f38ba8; animation: blink 1s linear infinite; }
+
+@keyframes blink {
+  50% { opacity: 0.3; }
+}
+
+#idle_inhibitor { color: #f38ba8; }
+#custom-nightlight { color: #f9e2af; }
+#custom-clipboard { color: #DCE2DF; }
+
+/* ── معلومات النظام (دمج سلس) ── */
+#custom-system { padding: 0 8px; }
+#cpu { color: #fab387; padding-right: 6px; }
+#memory { color: #89b4fa; padding-right: 6px; }
+#disk { color: #a6e3a1; padding-right: 6px; }
+#temperature { color: #f38ba8; }
+
+#custom-power_btn { color: #f38ba8; font-size: 16px; padding-right: 14px; }
+
+/* ── تأثيرات الـ Spotlight المتقدمة عند المرور بالماوس ── */
+#clock:hover, #battery:hover, #network:hover, #pulseaudio:hover, #backlight:hover,
+#custom-weather:hover, #custom-notify:hover, #power-profiles-daemon:hover,
+#custom-system:hover, #custom-launch_rofi:hover, #custom-power_btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+}

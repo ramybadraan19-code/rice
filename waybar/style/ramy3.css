@@ -1,0 +1,120 @@
+/* ╔══════════════════════════════════════════════════════╗
+   ║   Hanging Drop-Tabs Waybar — ramy4                  ║
+   ║   Style: Top-Attached Glass + Accent Top Borders     ║
+   ╚══════════════════════════════════════════════════════╝ */
+
+@import "style/theme.css";
+
+/* ── إعدادات عامة ── */
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font", "MesloLGS Nerd Font", "Font Awesome";
+  font-weight: 800;
+  font-size: 13px;
+  min-height: 0;
+}
+
+/* ── الخلفية الأساسية شفافة ── */
+window#waybar {
+  background: transparent;
+  color: #DCE2DF;
+}
+
+/* ── التبويبات المعلقة (Drop-Tabs) ── */
+.modules-left, .modules-center, .modules-right {
+  background: rgba(17, 17, 27, 0.85);
+  border-radius: 0 0 24px 24px; /* حواف دائرية من الأسفل فقط */
+  padding: 4px 14px 8px 14px; /* مسافة إضافية من الأسفل لراحة العين */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* ظل عميق لإبراز التعليق */
+}
+
+.modules-left {
+  border-top: 3px solid #89b4fa; /* خط أزرق من الأعلى */
+  margin-right: 12px;
+}
+
+.modules-center {
+  border-top: 3px solid #a6e3a1; /* خط أخضر */
+}
+
+.modules-right {
+  border-top: 3px solid #cba6f7; /* خط بنفسجي */
+  margin-left: 12px;
+}
+
+/* ── توحيد المسافات لكل العناصر ── */
+#custom-launch_rofi, #custom-weather, #custom-notify, #power-profiles-daemon,
+#mpris, #clock, #tray, #custom-updater, #network, #pulseaudio, #backlight,
+#battery, #idle_inhibitor, #custom-nightlight, #custom-clipboard, #custom-system,
+#custom-power_btn {
+  padding: 0 10px;
+  margin: 4px 2px;
+  border-radius: 8px;
+  background: transparent;
+  color: #DCE2DF;
+}
+
+/* ── Workspaces ── */
+#workspaces {
+  margin: 0;
+  padding: 0;
+}
+
+#workspaces button {
+  color: rgba(137, 180, 250, 0.4);
+  padding: 0 8px;
+  margin: 4px 3px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+#workspaces button.active {
+  color: #1e1e2e;
+  background: #89b4fa;
+  box-shadow: 0 0 10px rgba(137, 180, 250, 0.5);
+}
+
+#workspaces button:hover {
+  background: rgba(137, 180, 250, 0.2);
+  color: #89b4fa;
+}
+
+/* ── الألوان وتخصيص الموديولات ── */
+#custom-launch_rofi { color: #89b4fa; font-size: 18px; padding-left: 10px; }
+#custom-weather { color: #89dceb; }
+#custom-notify { color: #fab387; }
+#power-profiles-daemon { color: #f9e2af; }
+
+#mpris { color: #a6e3a1; }
+#custom-cava { color: #94e2d5; padding: 0 8px; margin: 4px 2px; font-size: 11px; }
+#clock { color: #a6e3a1; font-size: 14px; letter-spacing: 0.5px; }
+
+#tray { padding: 0 10px; }
+#custom-updater { color: #a6e3a1; }
+#network { color: #89dceb; }
+#pulseaudio { color: #cba6f7; }
+#pulseaudio.microphone { color: #f5c2e7; }
+#backlight { color: #f9e2af; }
+#battery { color: #a6e3a1; }
+#battery.warning { color: #fab387; }
+#battery.critical { color: #f38ba8; }
+#idle_inhibitor { color: #f38ba8; }
+#custom-nightlight { color: #f9e2af; }
+#custom-clipboard { color: #DCE2DF; }
+
+/* ── System Info ── */
+#custom-system { color: #fab387; }
+#cpu { color: #fab387; padding-right: 4px; }
+#memory { color: #89b4fa; padding-right: 4px; }
+#disk { color: #a6e3a1; padding-right: 4px; }
+#temperature { color: #f38ba8; }
+
+#custom-power_btn { color: #f38ba8; font-size: 16px; padding-right: 10px; }
+#custom-power_btn:hover { background: rgba(243, 139, 168, 0.2); border-radius: 8px; }
+
+/* ── تأثيرات الـ Hover ── */
+#clock:hover, #battery:hover, #network:hover, #pulseaudio:hover, #backlight:hover,
+#custom-weather:hover, #custom-notify:hover, #power-profiles-daemon:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
